@@ -1,0 +1,61 @@
+{
+    "Valorant":{
+        "Max": 5,
+        "Custom Max": 10
+    },
+    "Overwatch":{
+        "Max": 5,
+        "Custom Max": 10
+    },
+    "Counter-Strike 2":{
+        "Max": 5,
+        "Custom Max": 10
+    },
+    "Rocket League":{
+        "Max": 3,
+        "Custom Max": 6
+    },
+    "Lethal Company":{
+        "Max": 6
+    },
+    "Helldivers":{
+        "Max": 4
+    },
+    "Deep Rock Galactic":{
+        "Max": 4
+    },
+    "Borderlands 2":{
+        "Max": 4
+    },
+    "Borderlands 3":{
+        "Max": 4
+    },
+    "Chivalry":{
+        "Max": 64
+    },
+    "Risk of Rain 2":{
+        "Max": 4
+    },
+    "Path of Exile":{
+        "Max": 6
+    },
+    "Party Animals":{
+        "Max": 8
+    },
+    "Golf with Friends":{
+        "Max": 12
+    },
+    "Civilization VI":{
+        "Max": 12
+    },
+    "Halo":{
+        "Max": 12,
+        "Custom Max": 24
+    },
+    "Among Us":{
+        "Max": 10
+    },
+    "Don't Starve":{
+        "Max": 6
+    }
+}
