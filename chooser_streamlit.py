@@ -28,7 +28,7 @@ def run_streamlit():
         dr.roll_dice()
 
     if first_roll:
-        st.write(f"You all shall play: {dr.result}")
+        st.write(f"This is my command: {dr.result}")
 
 
 class DiceRoller:
