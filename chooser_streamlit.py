@@ -8,7 +8,7 @@ def main():
     run_streamlit()
 
 def run_streamlit():
-    first_roll=False
+    # first_roll=False
 
     st.title("The Magic Eight Ball")
 
@@ -18,16 +18,15 @@ def run_streamlit():
 
     dr.set_options_from_mode()
 
-    opt_str = f"These are your options: "
-    for name in dr.options:
-        opt_str += f"{name}, "
+    opt_str = dr.get_option_list_string()
+
     st.write(opt_str)
 
     if st.button("Roll"):
-        first_roll=True
+        # first_roll=True
         dr.roll_dice()
 
-    if first_roll:
+    # if first_roll:
         st.write(f"This is your fate: {dr.result}")
 
 
@@ -51,8 +50,8 @@ class DiceRoller:
         vgame_modes = {f"{n}+ Player Games":self.get_vgame_options(n) for n in range(6,1,-1)}
         dice_modes = {f"{n}-sided Dice": list(range(1,n+1)) for n in range(3,21)}
         mode_dict = {
-            **vgame_modes,
             "Yes or No": ["Yes", "No"],
+            **vgame_modes,
             **dice_modes
         }
         return mode_dict
@@ -65,6 +64,19 @@ class DiceRoller:
 
     def get_options(self):
         return self.options
+    
+    def get_option_list_string(self):
+        opt_str = f"These are your options: {self.options[0]}"
+
+        for name in self.options[1:-1]:
+            opt_str += f", {name}"
+        
+        if len(self.options) == 2:
+            opt_str += f" or {self.options[-1]}"
+        else:
+            opt_str += f", or {self.options[-1]}"
+
+        return opt_str
 
     def get_vgame_options(self, n, custom_games=False):
         vgame_max_players = self.get_vgame_max_players_dict()
