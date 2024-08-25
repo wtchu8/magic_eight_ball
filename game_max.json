@@ -57,5 +57,12 @@
     },
     "Don't Starve":{
         "Max": 6
+    },
+    "Deadlock": {
+        "Max": 6,
+        "Custom Max": 12
+    },
+    "Starcraft": {
+        "Max": 6
     }
 }
