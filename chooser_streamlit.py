@@ -47,7 +47,7 @@ class DiceRoller:
             self.options=[]
 
     def get_mode_dict(self):
-        vgame_modes = {f"{n}+ Player Games":self.get_vgame_options(n) for n in range(6,1,-1)}
+        vgame_modes = {f"{n} Player Games":self.get_vgame_options(n) for n in range(6,1,-1)}
         dice_modes = {f"{n}-sided Dice": list(range(1,n+1)) for n in range(3,21)}
         mode_dict = {
             "Yes or No": ["Yes", "No"],
