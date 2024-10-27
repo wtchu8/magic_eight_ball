@@ -51,7 +51,7 @@ class DiceRoller:
             n_players = st.slider("Number of Players", min_value=1, max_value=14, value=5)
             self.options = self.get_vgame_options(n_players)
         elif self.mode == "Dice":
-            n_sided_dice = st.slider("Number of sides of die", 1, 20)
+            n_sided_dice = st.slider("Number of sides of die", min_value=1, max_value=20, value=4)
             self.options = list(range(1,n_sided_dice+1))
         elif self.mode == "Custom":
             self.options = self.get_custom_options()
