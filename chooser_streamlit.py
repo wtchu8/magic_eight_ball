@@ -33,7 +33,7 @@ def run_streamlit():
 
 class DiceRoller:
     def __init__(self, mode="yn"):
-        self.mode_list = ["Yes or No", "Games", "Die", "Custom"]
+        self.mode_list = ["Yes or No", "Games", "Dice", "Custom"]
         self.mode=mode
         self.options=[]
         # self.set_options_from_mode()
@@ -44,13 +44,12 @@ class DiceRoller:
         return self.result
 
     def set_options_from_mode(self):
-        
         if self.mode == "Yes or No":
             self.options = ["Yes", "No"]
         elif self.mode == "Games":
             n_players = st.slider("Number of Players", min_value=1, max_value=14, value=5)
             self.options = self.get_vgame_options(n_players)
-        elif self.mode == "Die":
+        elif self.mode == "Dice":
             n_sided_dice = st.slider("Number of sides of die", 1, 20)
             self.options = list(range(1,n_sided_dice+1))
         elif self.mode == "Custom":
@@ -73,10 +72,11 @@ class DiceRoller:
         for name in self.options[1:-1]:
             opt_str += f", {name}"
         
-        if len(self.options) == 2:
+        if len(self.options) > 2:
+            opt_str += ","
+
+        if len(self.options) > 1:
             opt_str += f" or {self.options[-1]}"
-        else:
-            opt_str += f", or {self.options[-1]}"
 
         return opt_str
 
@@ -91,27 +91,31 @@ class DiceRoller:
 
     def get_custom_options(self):
 
-        option=st.text_input("Add an option")
-
-        # if st.button("Add"):
-        if option:
-            st.session_state["option_list"].append(option)
-
+        # Initialize the list in session state if not present
         if "option_list" not in st.session_state:
             st.session_state["option_list"] = []
 
+        # Text input to add a new option, with an `on_change` callback
+        st.text_input("Add an option", key="new_option", on_change=self.add_option)
+
+        # Display options with a remove button next to each
+        st.write("Options:")
         for i, option in enumerate(st.session_state["option_list"]):
-            st.write(f"{i}. {option}")
+            col1, col2 = st.columns([2, 8])
+            with col1:
+                if st.button("Remove", key=f"remove_{i}"):
+                    st.session_state["option_list"].pop(i)
+                    st.experimental_rerun()  # Rerun to update the list immediately after removal
+            with col2:
+                st.write(option)
 
-        for i, option in enumerate(st.session_state["option_list"]):
-            st.checkbox(option, value=True, key=i, on_change=st.session_state["option_list"].remove(option))
-                
+        return st.session_state["option_list"]
 
-        if st.button("Finished"):
-            return st.session_state["option_list"]
-
-        return []
-
+    def add_option(self):
+        # Append the new option to the list and clear the input field
+        if st.session_state["new_option"] and st.session_state["new_option"] not in st.session_state["option_list"]:
+            st.session_state["option_list"].append(st.session_state["new_option"])
+        st.session_state["new_option"] = ""  # Clear the input field after adding
 
 if __name__ == "__main__":
     main()
