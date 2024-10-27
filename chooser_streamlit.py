@@ -33,7 +33,8 @@ def run_streamlit():
 
 class DiceRoller:
     def __init__(self, mode="yn"):
-        self.mode_list = ["Yes or No", "Games", "Dice", "Custom"]
+        # custom is not ready yet
+        self.mode_list = ["Yes or No", "Games", "Dice"]#, "Custom"]
         self.mode=mode
         self.options=[]
         # self.set_options_from_mode()
