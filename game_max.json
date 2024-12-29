@@ -13,7 +13,7 @@
     },
     "Rocket League":{
         "Max": 3,
-        "Custom Max": 6
+        "Custom Max": 8
     },
     "Lethal Company":{
         "Max": 6
@@ -64,5 +64,18 @@
     },
     "Starcraft": {
         "Max": 6
+    },
+    "Skribbl.io": {
+        "Max": 50
+    },
+    "Codenames": {
+        "Max": 20
+    },
+    "Marvel Rivals": {
+        "Max": 6,
+        "Custom Max": 12
+    },
+    "Gartic Phone": {
+        "Max": 16
     }
 }
